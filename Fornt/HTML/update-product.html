@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Product</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Update Product</h2>
+        <form id="update-product-form">
+            <div class="form-group">
+                <label for="product-name">Product Name:</label>
+                <input type="text" id="product-name">
+            </div>
+            <div class="form-group">
+                <label for="product-price">Product Price:</label>
+                <input type="number" id="product-price">
+            </div>
+            <div class="form-group">
+                <label for="product-quantity">Product Quantity:</label>
+                <input type="number" id="product-quantity">
+            </div>
+            <div class="form-group">
+                <label for="product-size">Product Size:</label>
+                <select id="product-size">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+            </div>
+            <!-- Status Radio Buttons -->
+            <div class="form-group">
+                <label>Status:</label>
+                <label>
+                    <input type="radio" name="product-status" value="Activate" checked> Activate
+                </label>
+                <label>
+                    <input type="radio" name="product-status" value="Disable"> Disable
+                </label>
+            </div>
+            <button type="submit" class="btn update">Update Product</button>
+        </form>
+        <!-- เพิ่มปุ่ม Cancel ที่สามารถทำให้กลับไปยังหน้าหรือรีเฟรช -->
+        <button type="button" class="btn delete" id="cancel-button">Cancel</button>
+    </div>
+
+    <script>
+        // เมื่อฟอร์มถูกส่ง
+        document.getElementById('update-product-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // ป้องกันการรีเฟรชหน้า
+
+            // ดึงค่า ID จาก URL (กรณีนี้ใช้เป็นตัวอย่าง)
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            const productName = document.getElementById('product-name').value;
+            const productPrice = document.getElementById('product-price').value;
+            const productQuantity = document.getElementById('product-quantity').value;
+            const productSize = document.getElementById('product-size').value;
+            
+            // ตรวจสอบสถานะที่เลือก
+            const productStatus = document.querySelector('input[name="product-status"]:checked').value;
+
+            // สร้าง Object สำหรับข้อมูลที่จะส่งไป
+            const data = {
+                product_name: productName || undefined,
+                product_price: productPrice || undefined,
+                product_quantity: productQuantity || undefined,
+                product_size: productSize || undefined,
+                product_status: productStatus || 'Activate'  // ส่งค่า product_status
+            };
+
+            // ส่งข้อมูลไปยัง API ด้วย PUT
+            fetch(`http://localhost:3000/update/products/${productId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    alert('Product updated successfully!');
+                    window.location.href = 'add-product.html'; // เปลี่ยนเส้นทางไปยังหน้า add-product.html
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error updating product.');
+                });
+        });
+
+        // เพิ่ม event listener ให้กับปุ่ม Cancel เพื่อย้อนกลับไปยังหน้า add-product.html
+        document.getElementById('cancel-button').addEventListener('click', function () {
+            window.location.href = 'add-product.html'; // หรือคุณสามารถตั้ง URL ตามที่ต้องการ
+        });
+    </script>
+</body>
+
+</html>

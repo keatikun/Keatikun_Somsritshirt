@@ -1,0 +1,145 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group .radio-group {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.radio-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.radio-group label {
+    margin-left: 5px;
+}
+
+.product-list {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f8f9fa;
+}
+
+.btn {
+    padding: 10px 20px; /* กำหนดขนาด padding เท่ากัน */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none; /* ลบเส้นใต้ */
+    width: auto; /* กำหนดให้กว้างอัตโนมัติ */
+}
+
+.btn.add {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn.update {
+    background-color: #ffc107;
+    color: white;
+    text-decoration: none; /* ลบเส้นใต้ */
+}
+
+
+.btn.delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn.toggle-status {
+    background-color: #17a2b8;
+    color: white;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 6px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+}

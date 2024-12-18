@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Product Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Admin Product Management</h2>
+
+        <!-- Form for Adding/Updating Products -->
+        <div class="form-group">
+            <label for="product-name">Product Name:</label>
+            <input type="text" id="product-name" placeholder="Enter product name">
+        </div>
+        <div class="form-group">
+            <label for="product-price">Product Price:</label>
+            <input type="number" id="product-price" placeholder="Enter product price">
+        </div>
+        <div class="form-group">
+            <label for="product-quantity">Product Quantity:</label>
+            <input type="number" id="product-quantity" placeholder="Enter product quantity">
+        </div>
+        <div class="form-group">
+            <label for="product-size">Product Size:</label>
+            <select id="product-size">
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+            </select>
+        </div>
+        
+        <button class="btn add" id="add-product">Add Product</button>
+
+        <!-- Product List -->
+        <h3>Product List</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Size</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="product-list">
+                <!-- Dynamic product rows will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="service.js"></script>
+
+</body>
+
+</html>
